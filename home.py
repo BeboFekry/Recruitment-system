@@ -4,7 +4,7 @@ import streamlit as st
 # st.title("Home")
 
 # st.header("HR Recruitment Tutorial - Abdallah's Team", divider='blue')
-st.image(r"C:\Users\lenovo\Downloads\Picsart_26-09-27_16-54-36-501.png")
+st.image(r"media\Picsart_26-09-27_16-54-36-501.png")
 
 offers = st.Page('offers.py')
 dashboard = st.Page('dashboard.py')
