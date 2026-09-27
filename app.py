@@ -3,6 +3,7 @@ import streamlit as st
 import os
 st.write(os.getcwd())
 st.write(os.listdir())
+st.image("media/logo.png")
 st.logo("media/logo.png", size='large')
 
 about = """Findora is an AI-powered product assistant designed to simplify the process of finding, 
