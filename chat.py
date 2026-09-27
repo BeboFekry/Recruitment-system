@@ -5,4 +5,4 @@ import streamlit as st
 st.header("Coming Soon...")
 message = st.chat_input('Say Something...', accept_audio=True)
 
-st.columns([1,2,1])[1].image("media/Artificial intelligence.gif", width='stretch')
+st.columns([1,2,1])[1].image("media/Deconstructed robot-bro.png", width='stretch')
