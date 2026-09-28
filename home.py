@@ -11,21 +11,20 @@ dashboard = st.Page('dashboard.py')
 chatbot = st.Page('chat.py')
 booking = st.Page('booking.py')
 
-if st.session_state.logged_in:
-    col1, col2, col3, col4 = st.columns([1.1,1.4,1.3,0.8], vertical_alignment='top')
-    with col1:
-        if st.button(":blue[:material/article:] Offers", type='tertiary', width='content'):
-             st.switch_page(offers)
-    with col2:
-            if st.button(":blue[:material/article:] Booking Sheet", type='tertiary', width='content'):
-                st.switch_page(booking)
-            # st.link_button(":blue[:material/article:] Booking Sheet", 'https://docs.google.com/spreadsheets/d/102wYZPgUzyRqfxmmy2gWSGqrmEMvzfG-jzurOir4Qro/edit?gid=0#gid=0', type='tertiary')
-    with col3:
-        if st.button(":blue[:material/smart_toy:] Chatbot", type='tertiary'):
-            st.switch_page(chatbot)
-    with col4:
-        if st.button(":blue[:material/bar_chart:] Dashboard", type='tertiary'):
-            st.switch_page(dashboard)
+col1, col2, col3, col4 = st.columns([1.1,1.4,1.3,0.8], vertical_alignment='top')
+with col1:
+    if st.button(":blue[:material/article:] Offers", type='tertiary', width='content'):
+         st.switch_page(offers)
+with col2:
+        if st.button(":blue[:material/article:] Booking Sheet", type='tertiary', width='content'):
+            st.switch_page(booking)
+        # st.link_button(":blue[:material/article:] Booking Sheet", 'https://docs.google.com/spreadsheets/d/102wYZPgUzyRqfxmmy2gWSGqrmEMvzfG-jzurOir4Qro/edit?gid=0#gid=0', type='tertiary')
+with col3:
+    if st.button(":blue[:material/smart_toy:] Chatbot", type='tertiary'):
+        st.switch_page(chatbot)
+with col4:
+    if st.button(":blue[:material/bar_chart:] Dashboard", type='tertiary'):
+        st.switch_page(dashboard)
 
 
 st.header("HR Recruitment Tutorial - Abdallah's Team", divider='blue')
