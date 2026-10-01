@@ -1,10 +1,6 @@
 # Home Page - Tutorial
 import streamlit as st
 
-# st.title("Home")
-
-
-# st.header("HR Recruitment Tutorial - Abdallah's Team", divider='blue')
 st.image(r"media/Picsart_26-09-27_16-54-36-501.png")
 
 offers = st.Page('offers.py')
@@ -12,17 +8,13 @@ dashboard = st.Page('dashboard.py')
 chatbot = st.Page('chat.py')
 booking = st.Page('booking.py')
 
-# st.button("Link")
-# if st.session_state.logged_in:
 col1, col2, col3, col4 = st.columns([1.1,1.4,1.3,0.8], vertical_alignment='top')
 with col1:
-    # st.page_link(offers)
     if st.button(":blue[:material/article:] Offers", type='tertiary', width='content'):
             st.switch_page(offers)
 with col2:
         if st.button(":blue[:material/article:] Booking Sheet", type='tertiary', width='content'):
             st.switch_page(booking)
-        # st.link_button(":blue[:material/article:] Booking Sheet", 'https://docs.google.com/spreadsheets/d/102wYZPgUzyRqfxmmy2gWSGqrmEMvzfG-jzurOir4Qro/edit?gid=0#gid=0', type='tertiary')
 with col3:
     if st.button(":blue[:material/smart_toy:] Chatbot", type='tertiary'):
         st.switch_page(chatbot)
@@ -71,7 +63,7 @@ st.image('media/recruitment steps.png')
 st.divider()
 
 
-# st.Page(offers, title='لما تخش علي صفحة الاوفرات دي هتلاقي التفاصيل دي كلها')
+st.markdown("**:شرح صفحة الاوفرات**", text_alignment='right')
 explain = """
 **Company Name** :material/arrow_forward:  اسم الشركة
 
