@@ -137,7 +137,7 @@ for i in range(2,len(df)):
         st.write("**Offer details:**")
         # st.code(details, language=None)
         # st.markdown(f"```\n{details}\n```")
-        st.markdown(f"```\n{details}\n```", text_alignment='center', unsafe_allow_html=True, )
+        st.markdown(f"```\n{details}\n```", unsafe_allow_html=True, )
 
     # with st.expander(str(i) + ". " + info['Company Name']):
     #     col1, col2 = st.columns([3,1], vertical_alignment='center')
