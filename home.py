@@ -67,7 +67,7 @@ st.markdown(
 """, text_alignment='right')
 st.divider()
 st.subheader("Recruitment Process Steps")
-st.image('media/recruitment steps2.svg')
+st.image('media/recruitment steps.png')
 st.divider()
 
 
