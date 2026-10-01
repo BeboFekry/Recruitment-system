@@ -86,7 +86,7 @@ if 'offers' not in st.session_state:
 #             sheet_id = "1S2atXi2BwxcT_PujJIJzv0N1-yifDgCnBTBjjV-s3MY"
 #             csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 #             st.session_state.offers = pd.read_csv(csv_url)
-tabs = st.tabs(st.session_state.offers.loc[2:]["Company's Name"].values)
+tabs = st.tabs(st.session_state.offers.loc[2:]["Company's Name"].to_list())
 df = st.session_state.offers.copy()
 for i in range(2,len(df)):
     # print(df.iloc[i,0])
