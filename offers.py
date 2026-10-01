@@ -80,11 +80,13 @@ if 'offers' not in st.session_state:
         sheet_id = "1S2atXi2BwxcT_PujJIJzv0N1-yifDgCnBTBjjV-s3MY"
         csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
         st.session_state.offers = pd.read_csv(csv_url)
+# st.write(st.session_state.offers.columns)
 # elif st.session_state.offers==0:
 #     with st.spinner("Loading offers sheet..."):
 #             sheet_id = "1S2atXi2BwxcT_PujJIJzv0N1-yifDgCnBTBjjV-s3MY"
 #             csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 #             st.session_state.offers = pd.read_csv(csv_url)
+tabs = st.tabs(st.session_state.offers.loc[2:]["Company's Name"].values)
 df = st.session_state.offers.copy()
 for i in range(2,len(df)):
     # print(df.iloc[i,0])
@@ -112,7 +114,10 @@ for i in range(2,len(df)):
         }
     details = df.loc[i]["Offer details"],
     details = details[0].replace('\n', '  \n')
-    with st.expander(str(i) + ". " + info['Company Name']):
+    
+    # tabs = st.tabs(st.session_state.offers)
+    
+    with tabs[i-2]:
         col1, col2 = st.columns([3,1], vertical_alignment='center')
         with col1:
             st.subheader(info['Company Name'])
@@ -127,8 +132,32 @@ for i in range(2,len(df)):
                 state = f":red[{info['Status']}]"
 
             st.markdown(state, text_alignment='right')
-        st.table(info, border=True)
+        # st.write(pd.DataFrame(info, columns=['test','value']))
+        st.dataframe(pd.DataFrame(list(info.items()), columns=['Information','Value']), hide_index=True, )
         st.write("**Offer details:**")
-        st.markdown(f"{details}", text_alignment='center', unsafe_allow_html=True, )
-    # st.markdown(info)
+        # st.code(details, language=None)
+        # st.markdown(f"```\n{details}\n```")
+        st.markdown(f"```\n{details}\n```", text_alignment='center', unsafe_allow_html=True, )
+
+    # with st.expander(str(i) + ". " + info['Company Name']):
+    #     col1, col2 = st.columns([3,1], vertical_alignment='center')
+    #     with col1:
+    #         st.subheader(info['Company Name'])
+    #     with col2:
+    #         if info['Status'].lower().strip()=='high priority':
+    #             state = f":green[{info['Status']}]"
+    #         elif 'mid' in info['Status'].lower().strip():
+    #             state = f":yellow[{info['Status']}]"
+    #         elif 'low' in info['Status'].lower().strip():
+    #             state = f":orange[{info['Status']}]"
+    #         else:
+    #             state = f":red[{info['Status']}]"
+
+    #         st.markdown(state, text_alignment='right')
+    #     # st.write(pd.DataFrame(info, columns=['test','value']))
+    #     st.dataframe(info)
+    #     st.write("**Offer details:**")
+    #     st.markdown(f"{details}", text_alignment='center', unsafe_allow_html=True, )
+    # # st.markdown(info)
     # print('_'*100)
+
