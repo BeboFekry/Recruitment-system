@@ -12,34 +12,13 @@ if 'df' not in st.session_state:
 
 df = st.session_state.df.copy()
 
-# st.dataframe(
-#     (
-#         st.session_state.df[st.session_state.df['Recruiter Name']!='Abdallah Fekry']
-#         .reset_index(drop=True)
-#         # .apply(lambda x: f":green[{x[i]}]" for i in x)
-#      )
-#              )
 
-
-
-# def color_states(row):
-#   # إنشاء قائمة بنفس طول الصف تحمل القيم الافتراضية (بدون تنسيق)
-#   styles = [''] * len(row)
-
-#   # التأكد من أسماء الأعمدة بدقة (عدل الأسماء حسب اللي عندك في الـ DataFrame)
-#   # لو الشرط متحقق في الـ interview state
-#   if row.get('Interview State') == 'Accepted':
-#     # نفترض إننا عايزين نلون عمود الـ interview state بس (أو الصف كله، حسب رغبتك)
-#     idx = row.index.get_loc('Interview State')
-#     styles[idx] = 'color: green; font-weight: bold;'
-
-#   # لو الشرط متحقق في الـ vn state
-#   if row.get('VN State') == 'Accepted':
-#     idx = row.index.get_loc('VN State')
-#     styles[idx] = 'color: goldenrod; font-weight: bold;'
-
-#   return styles
-# import pandas as pd
+n = st.text_input('Search with the last 4 phone numbers', max_chars=4, placeholder='Search...', icon=":material/search:")
+if n:
+  if n.isnumeric() and len(n)==4:
+    df = df[df['Last 4 Phone numbers']==int(n)]
+if st.button(':material/remove: Remove filters'):
+   df = st.session_state.df.copy()
 
 
 def color_entire_row(row):
