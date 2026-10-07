@@ -1,8 +1,9 @@
 [theme]
+#2980b9
 base="dark"
 primaryColor="#2980b9"
 
-backgroundColor="#15001604"
+backgroundColor="#150016df"
 secondaryBackgroundColor="#30083fa7"
 
 # textColor = "rgb(210,210,210)"
