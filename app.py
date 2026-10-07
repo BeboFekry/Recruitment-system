@@ -1,7 +1,7 @@
 import streamlit as st
 import base64
 
-st.logo("media/logo.png", size='large')
+st.logo("media/Logo.png", size='large')
 
 about = """HR Recruiter Tutorial - Abdallah's Team"""
 menu_items = {
