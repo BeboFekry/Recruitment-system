@@ -61,7 +61,7 @@ for i in range(2,len(df)):
         if st.session_state.user_type=='recruiter':
             info.pop('Commission TL')
             info.pop('Commission UM')
-        st.table(pd.DataFrame(list(info.items()), columns=['Information','Value'], index=None), border=True)
+        # st.table(pd.DataFrame(list(info.items()), columns=['Information','Value'], index=None), border=True)
         st.dataframe(pd.DataFrame(list(info.items()), columns=['Information','Value']), hide_index=True, )
         st.write("**Offer details:**")
         st.markdown(f"```\n{details}\n```", unsafe_allow_html=True, )
