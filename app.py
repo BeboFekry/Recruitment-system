@@ -41,7 +41,7 @@ def set_bg_video(video_file):
     """
   st.markdown(html_code, unsafe_allow_html=True)
 
-set_bg_video(r"media\bg video.webm")
+set_bg_video(r"media/bg_video.webm")
 
 if "first_time" not in st.session_state:
   st.session_state.first_time = True
