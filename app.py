@@ -58,7 +58,7 @@ chat = st.Page("chat.py", title="Chatbot", icon=":material/smart_toy:")
 offers = st.Page("offers.py", title="Offers", icon=":material/article:")
 dashboard = st.Page("dashboard.py", title="Dashboard", icon=":material/bar_chart:")
 booking = st.Page("booking.py", title="Booking", icon=":material/sticky_note_2:")
-settings = st.Page("settings.py", title="Management", icon=":material/settings:")
+settings = st.Page("settings.py", title="Settings", icon=":material/settings:")
 
 pg = st.navigation([home, offers, chat, dashboard, booking, settings, login])
 
