@@ -52,13 +52,14 @@ if "chat_history" not in st.session_state:
 if "user_type" not in st.session_state:
   st.session_state.user_type = 'recruiter'
 
-
+login = st.Page("login.py", title="Login", icon=":material/login:")
 home = st.Page("home.py", title="Home", icon=":material/home:", default=True)
 chat = st.Page("chat.py", title="Chatbot", icon=":material/smart_toy:")
 offers = st.Page("offers.py", title="Offers", icon=":material/article:")
 dashboard = st.Page("dashboard.py", title="Dashboard", icon=":material/bar_chart:")
 booking = st.Page("booking.py", title="Booking", icon=":material/sticky_note_2:")
 settings = st.Page("settings.py", title="Management", icon=":material/settings:")
-pg = st.navigation([home, offers, chat, dashboard, booking, settings])
+
+pg = st.navigation([home, offers, chat, dashboard, booking, settings, login])
 
 pg.run()
