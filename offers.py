@@ -10,6 +10,7 @@ with col2:
         del st.session_state.offers
         st.rerun()
 
+# with st.loading
 if 'offers' not in st.session_state:
     with st.spinner("Loading offers sheet..."):
         sheet_id = "1S2atXi2BwxcT_PujJIJzv0N1-yifDgCnBTBjjV-s3MY"
@@ -28,10 +29,11 @@ if 'offers' not in st.session_state:
         }
         st.session_state.offers = (st.session_state.offers.sort_values(by='Status', key=lambda x: x.map(custom_order)).reset_index(drop=True))
 
-tabs = st.tabs(st.session_state.offers["Company's Name"].to_list())
+
+tabs = st.tabs(['ALL'] + st.session_state.offers["Company's Name"].to_list())
 df = st.session_state.offers.copy()
 
-for i in range(2,len(df)):
+for i in range(len(df)):
     # print(df.iloc[i,0])
     info = {
         'Company Name':df.loc[i]["Company's Name"],
@@ -57,26 +59,36 @@ for i in range(2,len(df)):
     details = df.loc[i]["Offer details"],
     details = details[0].replace('\n', '  \n')
     
-
+    if 'high' in  info['Status'].lower().strip():
+        state =  f":green-badge[:material/counter_1: {info['Status']}]"
+    elif 'mid' in info['Status'].lower().strip():
+        state =  f":orange-badge[:material/counter_2: {info['Status']}]"
+    elif 'low' in info['Status'].lower().strip():
+        state =  f":yellow-badge[:material/counter_3: {info['Status']}]"
+    else:
+        state =  f":red-badge[:material/cancel: {info['Status']}]"
+    if st.session_state.user_type=='recruiter':
+        info.pop('Commission TL')
+        info.pop('Commission UM')
+    with tabs[0]:
+        with st.expander(str(i) + ". " + f":blue[**{info['Company Name']}**] - {info['Language']} - :blue[{info['Nationality']}] - {info['Graduation Status']} - {state}"):
+            col1, col2 = st.columns([3,1], vertical_alignment='center')
+            with col1:
+                st.subheader(info['Company Name'])
+            with col2:   
+                st.markdown(state, text_alignment='right')
+            st.link_button('Apply Form', url=info['Form'])
+            st.dataframe(pd.DataFrame(list(info.items()), columns=['Information','Value']), hide_index=True, width='stretch')
+            st.write("**Offer details:**")
+            st.markdown(f"```{details}  \n```", text_alignment='center', unsafe_allow_html=True, )
     # ______________________________________________________________________________
-    with tabs[i-2]:
+    with tabs[i+1]:
         col1, col2 = st.columns([3,1], vertical_alignment='center')
         with col1:
             st.subheader(info['Company Name'])
         with col2:
-            if info['Status'].lower().strip()=='high priority':
-                state = f":green[{info['Status']}]"
-            elif 'mid' in info['Status'].lower().strip():
-                state = f":yellow[{info['Status']}]"
-            elif 'low' in info['Status'].lower().strip():
-                state = f":orange[{info['Status']}]"
-            else:
-                state = f":red[{info['Status']}]"
-
             st.markdown(state, text_alignment='right')
-        if st.session_state.user_type=='recruiter':
-            info.pop('Commission TL')
-            info.pop('Commission UM')
+        st.link_button('Apply Form', url=info['Form'])
         st.dataframe(pd.DataFrame(list(info.items()), columns=['Information','Value']), hide_index=True, width='stretch', height='content')
         st.write("**Offer details:**")
         st.markdown(f"```\n{details}\n```", unsafe_allow_html=True, )
