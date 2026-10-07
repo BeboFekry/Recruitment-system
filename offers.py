@@ -62,7 +62,7 @@ for i in range(2,len(df)):
             info.pop('Commission TL')
             info.pop('Commission UM')
         # st.table(pd.DataFrame(list(info.items()), columns=['Information','Value'], index=None), border=True)
-        st.dataframe(pd.DataFrame(list(info.items()), columns=['Information','Value']), hide_index=True, )
+        st.dataframe(pd.DataFrame(list(info.items()), columns=['Information','Value']), hide_index=True, width='stretch', height='content')
         st.write("**Offer details:**")
         st.markdown(f"```\n{details}\n```", unsafe_allow_html=True, )
 
